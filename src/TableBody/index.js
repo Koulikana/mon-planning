@@ -6,8 +6,7 @@ class TableBody extends React.Component {
     super();
 
     this.state = {
-      employeesId: [],
-      employeesList: [],
+      employees: [],
     };
   }
 
@@ -15,30 +14,23 @@ class TableBody extends React.Component {
     fetch('https://localhost:44368/planning/employees')
       .then(response => response.json())
       .then(data => {
-        const employeesId = data.map(employeId => ({
-          id: employeId,
-          cardUrl: `https://localhost:44368/planning/employees/${employeId}`,
+        const employees = data.map(employee => ({
+          id: employee.id,
+          firstName: employee.firstName,
+          lastName: employee.lastName,
+          cardUrl: `https://localhost:44368/planning/employees/${employee.id}`,
         }));
-
-        //modifier le 2eme then() pour récupérer la value des promises
-        const employeesList = employeesId.map(employee =>
-          fetch(employee.cardUrl)
-            .then(response => response.json())
-            .then(data => ({ id: data.id, firstName: data.firstName, lastName: data.lastName })),
-        );
-
-        this.setState({ employeesId: employeesId, employeesList: employeesList });
+        this.setState({ employees: employees });
       });
   }
 
   render() {
     return (
       <tbody>
-        {this.state.employeesId.map(employeeId => (
-          <TableRow id={employeeId.id} />
+        {this.state.employees.map(employee => (
+          <TableRow firstName={employee.firstName} lastName={employee.lastName} key={employee.id} />
         ))}
-        {console.log(this.state.employeesId)}
-        {console.log(this.state.employeesList)}
+        {console.log(this.state.employees)}
       </tbody>
     );
   }

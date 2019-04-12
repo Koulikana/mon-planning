@@ -4,7 +4,7 @@ class TableRow extends React.Component {
   render() {
     return (
       <tr className="Employee">
-        <th>{this.props.id}</th>
+        <th>{`${this.props.firstName} ${this.props.lastName}`}</th>
       </tr>
     );
   }
