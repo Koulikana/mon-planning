@@ -30,7 +30,6 @@ class TableBody extends React.Component {
         {this.state.employees.map(employee => (
           <TableRow firstName={employee.firstName} lastName={employee.lastName} key={employee.id} />
         ))}
-        {console.log(this.state.employees)}
       </tbody>
     );
   }
