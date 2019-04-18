@@ -17,7 +17,7 @@ class NavigationBar extends React.Component {
         const months = data.map(month => ({
           month: month.month,
           code: month.code,
-          days: month.daysCount,
+          days: month.days,
         }));
         this.setState({ months: months });
       });
