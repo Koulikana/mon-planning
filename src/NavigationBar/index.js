@@ -22,11 +22,12 @@ class NavigationBar extends React.Component {
         this.setState({ months: months });
       });
   }
+  className;
 
   render() {
     return (
       <StyledNavigationBar>
-        <StyledNav class="mois">
+        <StyledNav className="mois">
           <StyledOl>
             <StyledLi>
               <StyledButton>Précédent</StyledButton>
