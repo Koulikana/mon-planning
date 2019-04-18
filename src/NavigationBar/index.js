@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyledNav, StyledNavigationBar, StyledOl, StyledLi, StyledButton } from './styles';
 
 class NavigationBar extends React.Component {
   constructor() {
@@ -24,17 +25,24 @@ class NavigationBar extends React.Component {
 
   render() {
     return (
-      <div>
-        <nav class="mois">
-          <ul>
-            <li>Précédent</li>
+      <StyledNavigationBar>
+        <StyledNav class="mois">
+          <StyledOl>
+            <StyledLi>
+              <StyledButton>Précédent</StyledButton>
+            </StyledLi>
             {this.state.months.map(month => (
-              <li key={month.code}>{month.month}</li>
+              <StyledLi key={month.code}>
+                {' '}
+                <StyledButton>{month.month}</StyledButton>
+              </StyledLi>
             ))}
-            <li>Suivant</li>
-          </ul>
-        </nav>
-      </div>
+            <StyledLi>
+              <StyledButton>Suivant</StyledButton>{' '}
+            </StyledLi>
+          </StyledOl>
+        </StyledNav>
+      </StyledNavigationBar>
     );
   }
 }
