@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyledTd, StyledTh } from './styles';
 
 class TableHead extends React.Component {
   constructor() {
@@ -23,9 +24,9 @@ class TableHead extends React.Component {
 
   renderPeriodeCells = day => {
     return this.state.periodes.map(periode => (
-      <td colSpan="1" key={`${periode}${day}`}>
+      <StyledTd colSpan="1" key={`${periode}${day}`}>
         {periode}
-      </td>
+      </StyledTd>
     ));
   };
 
@@ -35,9 +36,9 @@ class TableHead extends React.Component {
         <tr>
           <th colSpan="2">Jours du mois</th>
           {this.state.days.map(day => (
-            <th colSpan="2" key={day}>
+            <StyledTh colSpan="2" key={day}>
               {day}
-            </th>
+            </StyledTh>
           ))}
         </tr>
         <tr>
