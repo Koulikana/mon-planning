@@ -1,4 +1,5 @@
 import React from 'react';
+import DayOptions from '../DayOptions';
 
 class TableRow extends React.Component {
   constructor() {
@@ -24,7 +25,7 @@ class TableRow extends React.Component {
   renderPeriodeCells = day => {
     return this.state.periodes.map(periode => (
       <td colSpan="1" key={`${periode}${day}`}>
-        test
+        <DayOptions />
       </td>
     ));
   };
