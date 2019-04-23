@@ -1,6 +1,6 @@
 import React from 'react';
 
-class DayOptions extends React.Component {
+class SelectOptions extends React.Component {
   constructor() {
     super();
 
@@ -34,4 +34,4 @@ class DayOptions extends React.Component {
   }
 }
 
-export default DayOptions;
+export default SelectOptions;
