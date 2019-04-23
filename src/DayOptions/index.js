@@ -25,7 +25,9 @@ class DayOptions extends React.Component {
     return (
       <select className="options">
         {this.state.dayOptions.map(option => (
-          <option value={option.value}>{option.option}</option>
+          <option value={option.value} key={option.value}>
+            {option.option}
+          </option>
         ))}
       </select>
     );
