@@ -1,20 +1,32 @@
 import React from 'react';
 
 class DayOptions extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      dayOptions: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch('https://localhost:44368/planning/DaysOption/')
+      .then(respose => respose.json())
+      .then(data => {
+        const dayOptions = data.map(option => ({
+          option: option.option,
+          value: option.value,
+        }));
+        this.setState({ dayOptions: dayOptions });
+      });
+  }
+
   render() {
     return (
       <select className="options">
-        <option value="normal" />
-        <option value="absent">Absent(e)</option>
-        <option value="conge">Congé</option>
-        <option value="deplacement">Déplacement</option>
-        <option value="ferie">Férié</option>
-        <option value="formation">Formation</option>
-        <option value="homeOffice">Home-office</option>
-        <option value="malade">Malade</option>
-        <option value="reunion">Réunion</option>
-        <option value="rdv">Rendez-vous</option>
-        <option value="weekend">Weekend</option>
+        {this.state.dayOptions.map(option => (
+          <option value={option.value}>{option.option}</option>
+        ))}
       </select>
     );
   }
