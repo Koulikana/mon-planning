@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyledDiv } from './styles';
 
 class SelectOptions extends React.Component {
   constructor() {
@@ -23,13 +24,15 @@ class SelectOptions extends React.Component {
 
   render() {
     return (
-      <select className="options">
-        {this.state.dayOptions.map(option => (
-          <option value={option.value} key={option.value}>
-            {option.option}
-          </option>
-        ))}
-      </select>
+      <StyledDiv>
+        <select className="options">
+          {this.state.dayOptions.map(option => (
+            <option value={option.value} key={option.value}>
+              {option.option}
+            </option>
+          ))}
+        </select>
+      </StyledDiv>
     );
   }
 }
