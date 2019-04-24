@@ -5,7 +5,7 @@ class TableCaption extends React.Component {
   //   super();
   // }
   render() {
-    return <caption>{`${this.props.mois} ${this.props.annee}`}</caption>;
+    return <caption>{`${this.props.month} ${this.props.year}`}</caption>;
   }
 }
 

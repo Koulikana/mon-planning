@@ -8,20 +8,6 @@ class Calendar extends React.Component {
     super();
 
     this.state = {
-      mois: [
-        'Janvier',
-        'Février',
-        'Mars',
-        'Avril',
-        'Mai',
-        'Juin',
-        'Juillet',
-        'Août',
-        'Septembre',
-        'Octobre',
-        'Novembre',
-        'Décembre',
-      ],
       annee: [2019, 2020],
     };
   }
@@ -29,7 +15,7 @@ class Calendar extends React.Component {
     return (
       <div>
         <table>
-          <TableCaption mois={this.state.mois[3]} annee={this.state.annee[0]} />
+          <TableCaption month={this.props.selectedMonth} year={this.state.annee[0]} />
           <TableHead />
           <TableBody />
         </table>
