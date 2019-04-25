@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { blue1 } from '../colors';
+import { lightCyan } from '../colors';
 
 export const StyledNav = styled.nav({
   color: 'purple',
@@ -20,7 +20,7 @@ export const StyledLi = styled.li({
 });
 
 export const StyledButton = styled.button({
-  backgroundColor: blue1,
+  backgroundColor: lightCyan,
   border: '1px solid #B0E0E6',
   fontSize: '13px',
   width: '80px',

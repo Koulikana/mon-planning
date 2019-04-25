@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { blue1, blue2 } from '../colors';
+import { lightCyan, powderBlue } from '../colors';
 
 export const StyledTd = styled.td({
-  backgroundColor: blue2,
-  color: blue1,
+  backgroundColor: powderBlue,
+  color: lightCyan,
 });
 
 export const StyledTh = styled.th({
-  backgroundColor: blue1,
-  borderColor: blue2,
+  backgroundColor: lightCyan,
+  borderColor: powderBlue,
 });
