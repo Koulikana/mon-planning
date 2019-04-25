@@ -1,25 +1,14 @@
 import React from 'react';
 import SelectOptions from '../SelectOptions';
+import { StyledTh, StyledTr } from './styles';
 
 class TableRow extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      month: '',
-      code: 0,
-      days: [],
-      morning: true,
       periodes: ['AM', 'PM'],
     };
-  }
-
-  componentDidMount() {
-    fetch('https://localhost:44368/planning/calendar/4')
-      .then(response => response.json())
-      .then(data => {
-        this.setState({ month: data.month, code: data.code, days: data.days });
-      });
   }
 
   renderPeriodeCells = day => {
@@ -32,10 +21,10 @@ class TableRow extends React.Component {
 
   render() {
     return (
-      <tr className="Employee">
-        <th colSpan="2">{`${this.props.firstName} ${this.props.lastName}`}</th>
-        {this.state.days.map(day => this.renderPeriodeCells(day))}
-      </tr>
+      <StyledTr className="Employee">
+        <StyledTh colSpan="2">{`${this.props.firstName} ${this.props.lastName}`}</StyledTh>
+        {this.props.days.map(day => this.renderPeriodeCells(day))}
+      </StyledTr>
     );
   }
 }

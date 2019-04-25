@@ -6,20 +6,8 @@ class TableHead extends React.Component {
     super();
 
     this.state = {
-      month: '',
-      code: 0,
-      days: [],
-      morning: true,
       periodes: ['AM', 'PM'],
     };
-  }
-
-  componentDidMount() {
-    fetch('https://localhost:44368/planning/calendar/4')
-      .then(response => response.json())
-      .then(data => {
-        this.setState({ month: data.month, code: data.code, days: data.days });
-      });
   }
 
   renderPeriodeCells = day => {
@@ -35,7 +23,7 @@ class TableHead extends React.Component {
       <thead>
         <tr>
           <th colSpan="2">Jours du mois</th>
-          {this.state.days.map(day => (
+          {this.props.days.map(day => (
             <StyledTh colSpan="2" key={day}>
               {day}
             </StyledTh>
@@ -43,7 +31,7 @@ class TableHead extends React.Component {
         </tr>
         <tr>
           <th colSpan="2">Employés</th>
-          {this.state.days.map(day => this.renderPeriodeCells(day))}
+          {this.props.days.map(day => this.renderPeriodeCells(day))}
         </tr>
       </thead>
     );

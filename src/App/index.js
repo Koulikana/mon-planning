@@ -9,7 +9,11 @@ class App extends React.Component {
 
     this.state = {
       months: [],
-      selectedMonth: '',
+      selectedMonth: {
+        month: 'Avril',
+        code: 3,
+        days: [],
+      },
     };
   }
 
@@ -28,7 +32,19 @@ class App extends React.Component {
 
   selectMonth = event => {
     const selectedMonth = event.target.innerText;
-    this.setState({ selectedMonth: selectedMonth });
+    for (let i = 0; i < this.state.months.length; i++) {
+      if (this.state.months[i].month === selectedMonth) {
+        this.setState({
+          selectedMonth: {
+            month: this.state.months[i].month,
+            code: this.state.months[i].code,
+            days: this.state.months[i].days,
+          },
+        });
+      } else {
+        console.log('pas ok');
+      }
+    }
   };
 
   render() {
