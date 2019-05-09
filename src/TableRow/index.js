@@ -1,6 +1,6 @@
 import React from 'react';
 import SelectOptions from '../SelectOptions';
-import { StyledTh, StyledTr } from './styles';
+import { StyledTh, StyledTr, StyledTd } from './styles';
 
 class TableRow extends React.Component {
   constructor() {
@@ -13,9 +13,9 @@ class TableRow extends React.Component {
 
   renderPeriodeCells = day => {
     return this.state.periodes.map(periode => (
-      <td colSpan="1" key={`${periode}${day}`}>
+      <StyledTd colSpan="1" key={`${periode}${day}`}>
         <SelectOptions />
-      </td>
+      </StyledTd>
     ));
   };
 
