@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../Header';
 import Calendar from '../Calendar';
 import NavigationBar from '../NavigationBar';
+import SelectYears from '../SelectYears';
 
 class App extends React.Component {
   constructor() {
@@ -51,6 +52,7 @@ class App extends React.Component {
     return (
       <div>
         <Header />
+        <SelectYears />
         <NavigationBar action={this.selectMonth} months={this.state.months} />
         <Calendar selectedMonth={this.state.selectedMonth} />
       </div>
