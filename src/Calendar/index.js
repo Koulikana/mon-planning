@@ -16,8 +16,12 @@ class Calendar extends React.Component {
     return (
       <div>
         <StyledTable>
-          <TableCaption month={this.props.selectedMonth.month} year={this.state.annee[0]} />
-          <TableHead days={this.props.selectedMonth.days} />
+          <TableCaption month={this.props.selectedMonth.month} year={this.props.selectedYear} />
+          <TableHead
+            days={this.props.selectedMonth.days}
+            selectedMonth={this.props.selectedMonth.code}
+            selectedYear={this.props.selectedYear}
+          />
           <TableBody days={this.props.selectedMonth.days} />
         </StyledTable>
       </div>

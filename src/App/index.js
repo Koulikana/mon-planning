@@ -15,31 +15,50 @@ class App extends React.Component {
         code: 3,
         days: [],
       },
+      years: [],
+      selectedYear: 2019,
     };
   }
 
   componentDidMount() {
-    fetch('https://localhost:44368/planning/Calendar/')
+    fetch('https://localhost:44368/planning/months')
       .then(response => response.json())
       .then(data => {
         const months = data.map(month => ({
           month: month.month,
-          code: month.code,
-          days: month.days,
+          code: month.monthId,
+          daysCount: month.daysCount,
         }));
         this.setState({ months: months });
       });
   }
 
+  setDays(daysCount) {
+    var days = [];
+    var day = 1;
+
+    while (day < daysCount + 1) {
+      days.push(day);
+      day++;
+    }
+
+    return days;
+  }
+
   selectMonth = event => {
     const selectedMonth = event.target.innerText;
+
     for (let i = 0; i < this.state.months.length; i++) {
       if (this.state.months[i].month === selectedMonth) {
+        const days = this.setDays(this.state.months[i].daysCount);
+        console.log(this.state.months[i].days);
+        console.log(days);
+
         this.setState({
           selectedMonth: {
             month: this.state.months[i].month,
             code: this.state.months[i].code,
-            days: this.state.months[i].days,
+            days: days,
           },
         });
       } else {
@@ -48,13 +67,20 @@ class App extends React.Component {
     }
   };
 
+  selectYear = event => {
+    const selectedYear = event.target.innerText;
+    this.setState({
+      selectedYear: selectedYear,
+    });
+  };
+
   render() {
     return (
       <div>
         <Header />
-        <SelectYears />
+        <SelectYears action={this.selectYear} />
         <NavigationBar action={this.selectMonth} months={this.state.months} />
-        <Calendar selectedMonth={this.state.selectedMonth} />
+        <Calendar selectedMonth={this.state.selectedMonth} selectedYear={this.state.selectedYear} />
       </div>
     );
   }

@@ -6,8 +6,8 @@ class SelectYears extends React.Component {
       <div>
         Année :{' '}
         <select>
-          <option>2019</option>
-          <option>2020</option>
+          <option onClick={this.props.action}>2019</option>
+          <option onClick={this.props.action}>2020</option>
         </select>
       </div>
     );

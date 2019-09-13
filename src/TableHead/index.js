@@ -18,6 +18,13 @@ class TableHead extends React.Component {
     ));
   };
 
+  displayDayTxt = dayNbr => {
+    const date = new Date(this.props.selectedYear, this.props.selectedMonth - 1, dayNbr);
+    var options = { weekday: 'short' };
+    const dayTxt = new Intl.DateTimeFormat('fr-FR', options).format(date);
+    return dayTxt;
+  };
+
   render() {
     return (
       <thead>
@@ -25,7 +32,7 @@ class TableHead extends React.Component {
           <th colSpan="2">Jours du mois</th>
           {this.props.days.map(day => (
             <StyledTh colSpan="2" key={day}>
-              {day}
+              {`${this.displayDayTxt(day)} ${day}`}
             </StyledTh>
           ))}
         </tr>
