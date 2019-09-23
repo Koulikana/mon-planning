@@ -5,13 +5,6 @@ import TableBody from '../TableBody';
 import { StyledTable } from './styles';
 
 class Calendar extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      annee: [2019, 2020],
-    };
-  }
   render() {
     return (
       <div>
