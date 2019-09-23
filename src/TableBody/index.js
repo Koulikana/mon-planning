@@ -15,10 +15,10 @@ class TableBody extends React.Component {
       .then(response => response.json())
       .then(data => {
         const employees = data.map(employee => ({
-          id: employee.id,
+          matricule: employee.matricule,
           firstName: employee.firstName,
           lastName: employee.lastName,
-          cardUrl: `https://localhost:44368/planning/employees/${employee.id}`,
+          cardUrl: `https://localhost:44368/planning/employees/${employee.matricule}`,
         }));
         this.setState({ employees: employees });
       });
@@ -31,7 +31,7 @@ class TableBody extends React.Component {
           <TableRow
             firstName={employee.firstName}
             lastName={employee.lastName}
-            key={employee.id}
+            key={employee.matricule}
             days={this.props.days}
           />
         ))}
