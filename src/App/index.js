@@ -11,12 +11,12 @@ class App extends React.Component {
     this.state = {
       months: [],
       selectedMonth: {
-        month: 'Avril',
-        code: 3,
-        days: [],
+        month: '',
+        code: 0,
+        days: [1, 2, 3, 4, 5, 6, 7, 8, 9],
       },
       years: [],
-      selectedYear: 2019,
+      selectedYear: 0,
     };
   }
 
@@ -31,6 +31,20 @@ class App extends React.Component {
         }));
         this.setState({ months: months });
       });
+
+    const currentMonth = new Date().getMonth();
+    const currentYear = new Date().getFullYear();
+    const currentMonthDaysCount = new Date(currentYear, currentMonth + 1, 0).getDate();
+    var options = { month: 'long' };
+
+    this.setState({
+      selectedMonth: {
+        month: new Intl.DateTimeFormat('fr-FR', options).format(new Date()),
+        code: currentMonth + 1,
+        days: this.setDays(currentMonthDaysCount),
+      },
+      selectedYear: currentYear,
+    });
   }
 
   setDays(daysCount) {
